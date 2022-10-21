@@ -38,7 +38,7 @@ jobs:
 #          # This assumes pytest is installed via the install-package step above
 #          command: pytest
 
-      - build-docker-image:
+      - run:
           name: Run
           command: ls
 # Invoke jobs via workflows

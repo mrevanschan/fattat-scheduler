@@ -4,3 +4,16 @@ run-test:
         - pip install -r requirements.txt
     script:
         - pytest -v
+build-image:
+    image: docker:20.10.16
+    services:
+        - docker:20.10.16-dind
+    variables:
+        IMAGE_NAME: evanschan/fattat-scheduler
+        IMAGE_TAG: 0.0.1
+        DOCKER_TLS_CERTDIR: "/certs"
+    before_script:
+        - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+    script:
+        - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+        - docker push $IMAGE_NAME:$IMAGE_TAG

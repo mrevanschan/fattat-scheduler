@@ -6,7 +6,7 @@ from services.post_scrapper import __get_recent_posts
 import os
 
 
-config.fileConfig(fname='../../log.ini')
+config.fileConfig(fname='log.ini')
 logging.getLogger('rocketry.task').propagate = False
 logging.info("Application Started")
 app = Rocketry()

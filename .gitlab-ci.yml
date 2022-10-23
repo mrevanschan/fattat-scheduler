@@ -26,3 +26,4 @@ deploy:
   script:
     - kubectl config use-context fattat/fattat-infra:civo-agent
     - kubectl get pods
+    - kubectl create deployment scheduler-deployment --image=evanschan/fattat-scheduler:0.0.1

@@ -50,6 +50,7 @@ def __get_recent_posts():
         'fatchaitat',
         page=1,
         # credentials=_fb_credentials,
+        cookies="cookies.txt",
         options={
             "allow_extra_requests": False,
             "posts_per_page": 1

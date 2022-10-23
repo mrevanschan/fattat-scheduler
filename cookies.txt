@@ -1,0 +1,12 @@
+.facebook.com	TRUE	/	TRUE	1696743285	sb	cOcSY0wkxvmtZwH4fdJO0phN
+.facebook.com	TRUE	/	TRUE	1696743281	datr	cOcSY2f0DeXer6-WemdfLGk8
+.facebook.com	TRUE	/	TRUE	1698024703	c_user	100001551436325
+.facebook.com	TRUE	/	TRUE	1672075334	m_page_voice	100001551436325
+.facebook.com	TRUE	/	TRUE	0	m_pixel_ratio	2
+.facebook.com	TRUE	/	TRUE	0	x-referer	eyJyIjoiL25zbWFsbC5oay8iLCJoIjoiL25zbWFsbC5oay8iLCJzIjoibSJ9
+.facebook.com	TRUE	/	TRUE	1666624781	dpr	2
+.facebook.com	TRUE	/	TRUE	1667041869	locale	en_US
+.facebook.com	TRUE	/	TRUE	0	presence	C%7B%22t3%22%3A%5B%7B%22i%22%3A%22u.1588442878%22%7D%5D%2C%22utc3%22%3A1666437830405%2C%22lm3%22%3A%22u.613661435382836%22%2C%22v%22%3A1%7D
+.facebook.com	TRUE	/	TRUE	1667093501	wd	1440x789
+.facebook.com	TRUE	/	TRUE	1698024703	xs	40%3AKxeEloDECzrV9A%3A2%3A1662183283%3A-1%3A8643%3A%3AAcVe1Za4zadez1n1WFM6-34m-cZ-P4PVcYrNzlvwOaY
+.facebook.com	TRUE	/	TRUE	1674264702	fr	0nuBO9FKApi20ziZA.AWXSaVs4N05fr39UplDI2Kp5Dsc.BjVJl-.sS.AAA.0.0.BjVJl-.AWUiETFy5zc

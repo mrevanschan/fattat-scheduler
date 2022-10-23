@@ -30,4 +30,4 @@ deploy:
     entrypoint: ['']
   script:
     - kubectl config use-context fattat/fattat-infra:civo-agent
-    - kubectl set image deployment/fattat-scheduler-deployment fattat-scheduler=evanschan/fattat-scheduler:$CI_PIPELINE_IID
+    - kubectl set image deployment/fattat-scheduler fattat-scheduler=evanschan/fattat-scheduler:$CI_PIPELINE_IID

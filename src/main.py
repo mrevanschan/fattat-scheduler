@@ -2,7 +2,7 @@ from rocketry import Rocketry
 from rocketry.conds import every
 import logging
 from logging import config
-import time
+import os
 
 
 config.fileConfig(fname='log.ini')
@@ -14,10 +14,7 @@ app = Rocketry()
 @app.task(every("5 seconds"))
 def poll_new_post():
     logging.info("SCHEDULE JOB: POLLING FB")
-    time.sleep(1)  # Sleep for 3 seconds
-    logging.info("COMPLETE")
-
-
+    logging.info(os.environ.get('DATABASE_URL'))
 
 
 if __name__ == "__main__":

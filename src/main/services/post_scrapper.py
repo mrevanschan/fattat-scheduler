@@ -7,13 +7,14 @@ from typing import Iterator
 import os
 import logging
 from logging import config
+
+import facebook_scraper
 from facebook_scraper import get_posts, _scraper, Post, extractors
 from facebook_scraper.extractors import (PostExtractor)
 # from internal_types import MatchingPost
 import re
 
 # _fb_credentials = (os.environ['FB_USER'], os.environ['FB_PASSWORD'])
-_scraper.have_checked_locale = True
 
 _sold_out_regex = re.compile(r'^\*+完')
 _payment_link_regex = re.compile(r'^https://wa.me/\d+|^https://forms.gle/')
@@ -25,6 +26,7 @@ _payment_link_regex = re.compile(r'^https://wa.me/\d+|^https://forms.gle/')
 #
 #
 # extractors.logger.setLevel(logging.ERROR)
+# facebook_scraper.logger.setLevel(logging.ERROR)
 # PostExtractor.extract_availability = skippingMethod
 # PostExtractor.extract_photo_link = skippingMethod
 # PostExtractor.extract_image_lq = skippingMethod

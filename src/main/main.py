@@ -15,7 +15,9 @@ app = Rocketry()
 @app.task(every("60 seconds"))
 def poll_new_post():
     logging.info("SCHEDULE JOB: POLLING FB")
-    for post in __get_recent_posts():
+    posts = __get_recent_posts()
+    logging.info(f"polled {len(posts)} posts")
+    for post in posts:
         logging.info(post)
 
 

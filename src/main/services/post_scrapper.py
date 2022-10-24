@@ -14,7 +14,7 @@ from facebook_scraper.extractors import (PostExtractor)
 # from internal_types import MatchingPost
 import re
 
-# _fb_credentials = (os.environ['FB_USER'], os.environ['FB_PASSWORD'])
+_fb_credentials = (os.environ['FB_USER'], os.environ['FB_PASSWORD'])
 
 _sold_out_regex = re.compile(r'^\*+完')
 _payment_link_regex = re.compile(r'^https://wa.me/\d+|^https://forms.gle/')
@@ -51,8 +51,8 @@ def __get_recent_posts():
     posts = get_posts(
         'fatchaitat',
         page=1,
-        # credentials=_fb_credentials,
-        cookies="cookies.txt",
+        credentials=_fb_credentials,
+        # cookies="cookies.txt",
         options={
             "allow_extra_requests": False,
             "posts_per_page": 1

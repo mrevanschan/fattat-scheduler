@@ -40,16 +40,11 @@ class Facebook:
     def init_driver():
         try:
             ua = Headers().generate()  # fake user agent
-            print(ua)
             browser_option = Options()
             browser_option.add_argument('--headless')
             browser_option.add_argument('--disable-extensions')
             browser_option.add_argument('--incognito')
-            browser_option.add_argument('--disable-gpu')
-            browser_option.add_argument('--log-level=3')
-            # browser_option.add_argument(f'user-agent={ua}')
-            browser_option.add_argument('--disable-notifications')
-            browser_option.add_argument('--disable-popup-blocking')
+            browser_option.add_argument(f'user-agent={ua}')
             s = Service('/usr/local/bin/chromedriver')
             return webdriver.Chrome(service=s, options=browser_option)
         except Exception as ex:

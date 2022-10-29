@@ -3,7 +3,7 @@ from rocketry.conds import every
 import logging
 from logging import config
 
-from src.main.services.facebook import Facebook
+from services.facebook import Facebook
 
 config.fileConfig(fname='log.ini')
 logging.getLogger('rocketry.task').propagate = False

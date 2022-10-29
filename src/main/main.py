@@ -2,9 +2,8 @@ from rocketry import Rocketry
 from rocketry.conds import every
 import logging
 from logging import config
-from services.post_scrapper import __get_recent_posts
-import os
 
+from src.main.services.facebook import Facebook
 
 config.fileConfig(fname='log.ini')
 logging.getLogger('rocketry.task').propagate = False
@@ -15,10 +14,11 @@ app = Rocketry()
 @app.task(every("60 seconds"))
 def poll_new_post():
     logging.info("SCHEDULE JOB: POLLING FB")
-    posts = __get_recent_posts()
-    logging.info(f"polled {len(posts)} posts")
-    for post in posts:
-        logging.info(post)
+    logging.info(Facebook.scrap_post())
+    # posts = __get_recent_posts()
+    # logging.info(f"polled {len(posts)} posts")
+    # for post in posts:
+    #     logging.info(post)
 
 
 if __name__ == "__main__":

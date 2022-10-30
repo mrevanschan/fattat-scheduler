@@ -48,7 +48,7 @@ class Facebook:
             browser_option.add_argument("--no-sandbox");
             browser_option.add_argument("--disable-dev-shm-usage");
             s = Service('/usr/local/bin/chromedriver')
-            return webdriver.Chrome(service=s, options=browser_option)
+            return webdriver.Chrome(options=browser_option)
         except Exception as ex:
             print(ex)
 

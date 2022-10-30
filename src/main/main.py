@@ -11,7 +11,7 @@ logging.info("Application Started")
 app = Rocketry()
 
 
-@app.task(every("1 hour"))
+@app.task(every("1 day"))
 def poll_new_post():
     logging.info("SCHEDULE JOB: POLLING FB")
     logging.info(Facebook.scrap_post())

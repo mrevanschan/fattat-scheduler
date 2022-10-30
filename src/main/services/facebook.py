@@ -70,6 +70,7 @@ class Facebook:
 
             browser = Facebook.init_driver()
             browser.get(URL)
+            logging.info(browser.page_source)
 
             WebDriverWait(browser, 5).until(
                 EC.presence_of_element_located((By.CLASS_NAME, "coverPhoto"))
@@ -105,6 +106,7 @@ class Facebook:
                     pass
             return post_texts
         except Exception as ex:
+            logging.info(f"exception: {ex}")
             print(ex)
         finally:
             browser.close()

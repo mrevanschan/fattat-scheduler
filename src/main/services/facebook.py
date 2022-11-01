@@ -108,6 +108,7 @@ class Facebook:
                     pass
             return post_texts
         except Exception as ex:
+            logging.info(browser.current_url)
             logging.info(browser.page_source)
             logging.info(f"exception: {ex}")
         finally:

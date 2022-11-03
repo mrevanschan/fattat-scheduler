@@ -41,7 +41,7 @@ class Facebook:
         try:
             ua = Headers().generate()  # fake user agent
             browser_option = Options()
-            browser_option.add_argument('--headless')
+            # browser_option.add_argument('--headless')
             browser_option.add_argument('--disable-extensions')
             browser_option.add_argument('--incognito')
             browser_option.add_argument(f'user-agent={ua}')
@@ -64,13 +64,23 @@ class Facebook:
         return len(browser.find_elements(By.CLASS_NAME, '_3drp'))
 
     @staticmethod
+    def login(browser):
+        browser.
+
+    @staticmethod
     def scrap_post():
         try:
-            URL = "https://m.facebook.com/fatchaitat"
+            URL = "https://m.facebook.com/login.php?next=https%3A%2F%2Fm.facebook.com%2Ffatchaitat&refsrc=deprecated&_rdr"
 
             browser = Facebook.init_driver()
             browser.get(URL)
+            browser.implicitly_wait(2)
 
+            logging.info(browser.current_url)
+            logging.info(browser.page_source)
+
+            if "Log in" in browser.title:
+                login(browser)
             if "Blocked" in browser.title:
                 raise Exception("You’re Temporarily Blocked")
 
@@ -81,31 +91,36 @@ class Facebook:
             number_of_posts = Facebook.scroll_for_post(browser)
             while number_of_posts < no_post_to_scape:
                 number_of_posts = Facebook.scroll_for_post(browser)
-            browser.find_element(By.ID, "popup_xout").click()
 
             posts = browser.find_elements(By.CLASS_NAME, '_3drp')[:no_post_to_scape]
 
+            time.sleep(2)
+            browser.find_element(By.ID, "popup_xout").click()
             # class text_exposed_show
             post_texts = {}
             for post in posts:
                 more_btn = post.find_element(By.XPATH, './/span[@class="text_exposed_hide"]//a[text()="More"]')
-                url = more_btn.get_attribute("href")
-                post_id = parse.parse_qs(parse.urlparse(url).query)['story_fbid'][0]
-                action = webdriver.common.action_chains.ActionChains(browser)
-                try:
-                    action.move_to_element(more_btn)
-                    action.perform()
-                    more_btn.click()
+                if more_btn:
+                    url = more_btn.get_attribute("href")
+                    post_id = parse.parse_qs(parse.urlparse(url).query)['story_fbid'][0]
+                    action = webdriver.common.action_chains.ActionChains(browser)
                     try:
-                        more_btn = post.find_element(By.XPATH, './/span[@class="text_exposed_show"]//a[text()="More"]')
-                        logging.error("Need to handle")
-                    except NoSuchElementException:
-                        post_p_tag = post.find_elements(By.XPATH, './/span[@class="text_exposed"]//p')
-                        post_texts[post_id] = ''.join(p.text for p in post_p_tag)
-                except Exception as e:
-                    # do nothing right here
-                    logging.error(e)
-                    pass
+                        action.move_to_element(more_btn)
+                        action.perform()
+                        more_btn.click()
+                        try:
+                            more_btn = post.find_element(By.XPATH, './/span[@class="text_exposed_show"]//a[text()="More"]')
+                            logging.error("Need to handle")
+                        except NoSuchElementException:
+                            post_p_tag = post.find_elements(By.XPATH, './/span[@class="text_exposed"]//p')
+                            post_texts[post_id] = ''.join(p.text for p in post_p_tag)
+                    except Exception as e:
+                        # do nothing right here
+                        logging.error(e)
+                        pass
+                else:
+                    post.find_elements(By.XPATH, './/span[@class="text_exposed"]//p')
+                    post_texts[post_id] = ''.join(p.text for p in post_p_tag)
             return post_texts
         except Exception as ex:
             logging.info(browser.current_url)

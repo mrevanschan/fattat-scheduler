@@ -3,7 +3,7 @@ import logging
 # import time
 from facebook_scraper import get_posts
 
-def scape():
+def scrape():
     for post in get_posts("fatchaitat", pages=1):
         logging.info( post["text"])
  

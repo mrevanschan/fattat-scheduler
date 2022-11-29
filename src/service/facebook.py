@@ -5,7 +5,7 @@ from facebook_scraper import get_posts
 
 def scrape():
     try:
-        posts = get_posts("fatchaitat", pages=1,credentials=(os.environ['FB_USER'], os.environ['FB_PASSCODE']))
+        posts = get_posts("fatchaitat", pages=1,credentials=(os.environ['FB_USER'], os.environ['FB_PASSWORD']))
         logging.info(f"scaped: {len(posts)}")
         for post in posts:
             logging.info( post["text"])

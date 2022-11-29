@@ -14,7 +14,7 @@ app = Rocketry()
 @app.task(every("1 hour"))
 def poll_new_post():
     logging.info("SCHEDULE JOB: POLLING FB")
-    scrape()
+    # scrape()
 
 # logging.info(Facebook.scrap_post())
 # posts = __get_recent_posts()
